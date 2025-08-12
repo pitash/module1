@@ -1,0 +1,21 @@
+name: Read Hello.txt File
+
+on:
+  push:
+    branches:
+      - main
+      
+  pull_request:
+    branches:
+      - main    
+
+jobs:
+  read-hello-file:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Read and print hello.txt
+        run: cat hello.txt || echo "hello.txt not found!"
